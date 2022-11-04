@@ -80,11 +80,23 @@ def transfer():
                             password="Laartje123",
                             port="5432")
     cursor = conn.cursor()
-    cursor.execute(""" INSERT INTO bericht (Naam, locatie, Datum, Bericht, Goedgekeurd) 
-    VALUES(%s,%s,%s,%s,%s);""", (gegevens[0][1], gegevens[0][2], gegevens[0][3], gegevens[0][0], check))
 
     cursor.execute(""" INSERT INTO moderator (naam, emailadress, datum) 
     VALUES(%s,%s,%s);""", (modnaam, modmail, datum))
+    conn.commit()
+    conn.close()
+    conn = psycopg2.connect(database="Project A",
+                            host="127.0.0.1",
+                            user="postgres",
+                            password="Laartje123",
+                            port="5432")
+    cursor = conn.cursor()
+    cursor.execute("""SELECT ModID FROM Moderator WHERE emailadress = %s """, (modmail,))
+    ModID = cursor.fetchone()
+
+    cursor.execute(""" INSERT INTO bericht (Naam, locatie, Datum, Bericht, Goedgekeurd, ModID) 
+    VALUES(%s,%s,%s,%s,%s,%s);""", (gegevens[0][1], gegevens[0][2], gegevens[0][3], gegevens[0][0], check, ModID))
+
     conn.commit()
     conn.close()
     print('\nOvergeschreven naar database')
