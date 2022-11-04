@@ -1,0 +1,1 @@
+Tijdens dit project ontwerp ik een stationszuil die revieuws van reizigers opslaat, filtert en toont op een extern beeldscherm.
