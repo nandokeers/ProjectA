@@ -120,7 +120,7 @@ def station(stad):
     stationframe.pack(pady=40)
 
     # frame wallpaper
-    bg = Image.open('framewp.png')
+    bg = Image.open("foto's/framewp.png")
     background_image = ImageTk.PhotoImage(bg)
     background_label = Label(stationframe, image=background_image)
     background_label.place(x=0, y=0, relwidth=1, relheight=1)
@@ -206,10 +206,10 @@ def station(stad):
     faciliteitenlabel.grid(row=1, column=2, pady=10, padx=10, sticky='WS')
 
     #faciliteitenfotos aanmaken
-    imglift = Image.open('img_lift.png')
-    imgfiets = Image.open('img_ovfiets.png')
-    imgpr = Image.open('img_pr.png')
-    imgtoilet = Image.open('img_toilet.png')
+    imglift = Image.open("foto's/img_lift.png")
+    imgfiets = Image.open("foto's/img_ovfiets.png")
+    imgpr = Image.open("foto's/img_pr.png")
+    imgtoilet = Image.open("foto's/img_toilet.png")
 
     #fotos resizen
     resized_image3 = imglift.resize((50, 50))
@@ -278,7 +278,7 @@ def mainpage():
     root.title('NS-Reviews')
     root.config(bg='#FFC917')
     root.attributes('-fullscreen', True)
-    bg = Image.open('bg.png')
+    bg = Image.open("foto's/bg.png")
     background_image = ImageTk.PhotoImage(bg)
     background_label = Label(root, image=background_image)
     background_label.place(x=0, y=0, relwidth=1, relheight=1)
@@ -295,7 +295,7 @@ def mainframe():
     frame.pack(pady=40)
 
     #frame wallpaper
-    bg = Image.open('framewp.png')
+    bg = Image.open("foto's/framewp.png")
     background_image = ImageTk.PhotoImage(bg)
     background_label = Label(frame, image=background_image)
     background_label.place(x=0, y=0, relwidth=1, relheight=1)
@@ -309,9 +309,9 @@ def mainframe():
     mainsublabel.grid(row=1, column=1, pady=10, padx=10)
 
     #plaatsen foto's
-    utrimg = Image.open("utrecht.jpg")
-    amsimg = Image.open("amsterdam.jpg")
-    hilimg = Image.open("hilversum.png")
+    utrimg = Image.open("foto's/utrecht.jpg")
+    amsimg = Image.open("foto's/amsterdam.jpg")
+    hilimg = Image.open("foto's/hilversum.png")
 
     resized_image3 = utrimg.resize((300, 300))
     utrechtimg = ImageTk.PhotoImage(resized_image3)

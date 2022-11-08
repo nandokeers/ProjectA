@@ -14,7 +14,7 @@ def mainpage():
     root.attributes('-fullscreen', True)
 
     #window achergrond
-    bg = Image.open('bg.png')
+    bg = Image.open("foto's/bg.png")
     background_image = ImageTk.PhotoImage(bg)
     background_label = Label(root, image=background_image)
     background_label.place(x=0, y=0, relwidth=1, relheight=1)
@@ -31,7 +31,7 @@ def mainframe():
     frame.pack(pady=40)
 
     #frame achtergrond
-    bg = Image.open('framewp.png')
+    bg = Image.open("foto's/framewp.png")
     background_image = ImageTk.PhotoImage(bg)
     background_label = Label(frame, image=background_image)
     background_label.place(x=0, y=0, relwidth=1, relheight=1)
