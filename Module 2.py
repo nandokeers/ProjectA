@@ -1,6 +1,7 @@
 #import modules
 import datetime
-import psycopg2
+import hmac
+import config
 from tkinter import *
 from PIL import ImageTk, Image
 
@@ -8,11 +9,7 @@ def transfer():
     #code voor overschrijven naar database
 
     #conecten met database
-    conn = psycopg2.connect(database="Project A",
-                            host="127.0.0.1",
-                            user="postgres",
-                            password="Laartje123",
-                            port="5432")
+    conn = config.db_connect()
     cursor = conn.cursor()
 
     #Moderator gegevens overschrijven
@@ -22,11 +19,7 @@ def transfer():
     conn.close()
 
     #opnieuw conecten database
-    conn = psycopg2.connect(database="Project A",
-                            host="127.0.0.1",
-                            user="postgres",
-                            password="Laartje123",
-                            port="5432")
+    conn = config.db_connect()
     cursor = conn.cursor()
 
     #modID ophalen
@@ -258,7 +251,7 @@ def mainframe():
     # verzendknop
     def verzend():
         wachtwoord = ww.get()
-        if wachtwoord == 'Welkom123':
+        if hmac.compare_digest(wachtwoord, config.moderator_password()):
             modframe()
         else:
             ww.delete(0, END)
