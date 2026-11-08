@@ -1,0 +1,9 @@
+# Secrets: never commit these
+.env
+
+# IDE / Python
+.idea/
+__pycache__/
+*.pyc
+venv/
+.venv/

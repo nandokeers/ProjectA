@@ -2,15 +2,11 @@ from tkinter import *
 from PIL import ImageTk, Image
 import requests
 from time import strftime
-import psycopg2
+import config
 
 def faciliteitenophalen(stad):
     # connectie database
-    conn = psycopg2.connect(database="Project A",
-                            host="127.0.0.1",
-                            user="postgres",
-                            password="Laartje123",
-                            port="5432")
+    conn = config.db_connect()
     # connectie cursor
     cursor = conn.cursor()
 
@@ -33,11 +29,7 @@ def faciliteitenophalen(stad):
     # close connection
     conn.close()
 def berichtenophalen(stad):
-    conn = psycopg2.connect(database="Project A",
-                            host="127.0.0.1",
-                            user="postgres",
-                            password="Laartje123",
-                            port="5432")
+    conn = config.db_connect()
     # cursor
     cursor = conn.cursor()
 
@@ -79,12 +71,10 @@ def berichtenophalen(stad):
     conn.close()
 
 def weather_get(stad):
-    key = "785b13658e57032c0a8b258a7dbe1afa"
-    url = "http://api.openweathermap.org/data/2.5/weather?"
-    compleet = url + "appid=" + key + "&q=" + stad
-    response = requests.get(compleet)
+    url = "https://api.openweathermap.org/data/2.5/weather"
+    response = requests.get(url, params={"appid": config.weather_api_key(), "q": stad}, timeout=10)
     weather = response.json()
-    kelvin = 273
+    kelvin = 273.15
     global city
     global temp
     global temp_min
